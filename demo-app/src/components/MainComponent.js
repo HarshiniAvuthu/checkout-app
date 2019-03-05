@@ -3,7 +3,7 @@ import Cart from './CartComponent';
 import Checkout from './CheckoutComponent';
 import ShippingAddress from './ShippingAddressComponent';
 import PaymentDetails from './PaymentDetailsComponent';
-import Preview from './PaymentDetailsComponent';
+import Preview from './PreviewComponent';
 import Thankyou from './ThankyouComponent';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 

@@ -2,10 +2,12 @@ import React from 'react';
 
 function Cart(props) {
     return(
-        <div class="container">
+       <div class="container">
+            <div class="text-center">
+                <p class="lead">Cart page</p>
+            </div>
             <div class="row">
                 <div class="col-md-4 order-md-2 mb-4">
-                    <h2>This is cart page</h2>
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Your cart</span>
                         <span class="badge badge-secondary badge-pill">3</span>
@@ -52,6 +54,9 @@ function Cart(props) {
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="col-md-8 order-md-1">
+                    
                 </div>
             </div>
         </div>
