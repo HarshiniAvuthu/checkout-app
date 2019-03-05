@@ -56,6 +56,19 @@ function Checkout(props) {
                     </form>
                 </div>
                 <div class="col-md-8 order-md-1">
+                    <form class="form-signin">
+                        <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
+                        <label htmlFor="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" id="inputEmail" class="form-control mb-3" placeholder="Email address" required autoFocus/>
+                        <label htmlFor="inputPassword" class="sr-only">Password</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required/>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"/> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
                 </div>
             </div>
         </div>
