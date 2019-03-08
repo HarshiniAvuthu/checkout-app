@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input , Button, Row, Col } from 'reactstrap';
+import { Control, Errors } from 'react-redux-form';
 
-function Checkout(props) {
-    return(
-       <div class="container">
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
+class Checkout extends Component {
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.state = {
+            isModalOpen: false
+        };
+    }
+
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+
+    handleLogin(event) {
+        this.toggleModal();
+        event.preventDefault();
+    }
+
+    handleSubmit(values) {
+        console.log('Current State is: ' + JSON.stringify(values));
+    }
+
+    render() {
+        return (
+        <div class="container">
             <div class="text-center">
                 <p class="lead">Checkout page</p>
             </div>
@@ -56,23 +87,121 @@ function Checkout(props) {
                     </form>
                 </div>
                 <div class="col-md-8 order-md-1">
-                    <form class="form-signin">
+                    <Form onSubmit={this.handleLogin}>
                         <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
-                        <label htmlFor="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control mb-3" placeholder="Email address" required autoFocus/>
-                        <label htmlFor="inputPassword" class="sr-only">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required/>
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" value="remember-me"/> Remember me
-                            </label>
+                        <FormGroup>
+                            <Label htmlFor="email">Email</Label>
+                            <Control.text model=".email" id="email" name="eamil" 
+                                placeholder="Email" className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}/>
+                                <Errors className="text-danger" model=".email"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                }}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="password">Password</Label>
+                            <Control.text model=".Password" id="Password" name="Password" 
+                                placeholder = "Password" className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}/>
+                                <Errors className="text-danger" model = ".Password"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                }}/>
+                        </FormGroup>
+                        <div class="checkbox mb-3 ml-3">
+                            <Label>
+                                <Input type="checkbox" value="remember-me"/> Remember me
+                            </Label>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                    </form>
+                        <div className="mt-3" outline onClick={this.toggleModal}>
+                            <span>New customer want to sign up</span>
+                        </div>
+                    </Form>
                 </div>
             </div>
+            <Modal isOpen = {this.state.isModalOpen} toggle = {this.toggleModal}>
+                <ModalHeader toggle = {this.toggleModal}>Sign up</ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.handleLogin}>
+                        <FormGroup>
+                            <Label htmlFor="username">Name</Label>
+                            <Control.text model=".name" id="name" name="name" 
+                                placeholder="name" className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}/>
+                                <Errors className="text-danger" model=".name"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                }}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="username">email</Label>
+                            <Control.text model=".email" id="email" name="email" 
+                                placeholder="email" className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}/>
+                                <Errors className="text-danger" model=".name"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                }}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="password">Password</Label>
+                            <Control.text model=".password" id="password" name="password" 
+                                placeholder="password" className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}/>
+                                <Errors className="text-danger" model=".password"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                }}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="password">confirm Password</Label>
+                            <Control.text model=".conpassword" id="conpassword" name="conpassword" 
+                                placeholder="confirm password" className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}/>
+                                <Errors className="text-danger" model=".conpassword"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: 'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                }}/>
+                        </FormGroup>
+                        <Button type="submit" value="submit" className="bg-primary" color="primary">Sign up</Button>
+                    </Form>
+                </ModalBody>
+            </Modal>
         </div>
-    )
+        )
+    }
 }
 
 export default Checkout;
