@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Categories from './Categories';
 import Shop from './Shop';
 import Cart from './CartComponent';
 import Checkout from './CheckoutComponent';
@@ -35,7 +34,5 @@ class Main extends Component {
         );
     }
 }
-
-
 
 export default Main;

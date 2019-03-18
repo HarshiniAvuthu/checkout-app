@@ -3,8 +3,8 @@ import React from 'react';
 function Cart(props) {
     return(
        <div class="container">
-            <div class="text-center">
-                <p class="lead">Cart page</p>
+            <div className="text-center">
+                <p className="lead">Cart page</p>
             </div>
             <div class="row">
                 <div class="col-md-4 order-md-2 mb-4">
