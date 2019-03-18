@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductsContainer from '../containers/ProductComponent';
 import Cart from './CartComponent';
 import Checkout from './CheckoutComponent';
 import ShippingAddress from './ShippingAddressComponent';
@@ -12,7 +13,8 @@ class Main extends Component {
         return (
             <Router>
                 <div>
-                    <ul className="list-unstyled">
+                    <ul>
+                        <li><Link to='/products'>Products</Link></li>
                         <li><Link to='/cart'>Cart</Link></li>
                         <li><Link to='/checkout'>Checkout</Link></li>
                         <li><Link to='/shipping-address'>Shipping Address</Link></li>
@@ -20,6 +22,7 @@ class Main extends Component {
                         <li><Link to='/preview'>Preview</Link></li>
                         <li><Link to='/thank-you'>Thank You</Link></li>
                     </ul>
+                    <Route path="/products" component={ProductsContainer}/>
                     <Route path="/cart" exact component={Cart} />
                     <Route path="/checkout" component={Checkout} />
                     <Route path="/shipping-address" component={ShippingAddress} />
