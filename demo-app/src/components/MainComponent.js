@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Shopcomponent from './ShopComponent';
 import Shop from './Shop';
 import Cart from './CartComponent';
 import Checkout from './CheckoutComponent';
@@ -14,6 +15,7 @@ class Main extends Component {
             <Router>
                 <div>
                     <ul>
+                        <li><Link to='/shopcomponent'>Shopcomponent</Link></li>
                         <li><Link to='/shop'>shop</Link></li>
                         <li><Link to='/cart'>Cart</Link></li>
                         <li><Link to='/checkout'>Checkout</Link></li>
@@ -22,6 +24,7 @@ class Main extends Component {
                         <li><Link to='/preview'>Preview</Link></li>
                         <li><Link to='/thank-you'>Thank You</Link></li>
                     </ul>
+                    <Route path="/shopcomponent" component={Shopcomponent}/>
                     <Route path="/shop" component={Shop}/>
                     <Route path="/cart" exact component={Cart} />
                     <Route path="/checkout" component={Checkout} />
